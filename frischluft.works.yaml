@@ -51,6 +51,9 @@ globals:
   - id: calibrating
     type: boolean
     initial_value: 'false'
+  - id: lastCo2value
+    type: int
+    initial_value: '0'
 
 number:
   - platform: template
@@ -262,14 +265,19 @@ sensor:
     co2:
       name: "${human_devicename} CO2"
       id: mhz19_co2
-      on_raw_value:
+      filters:
+        - sliding_window_moving_average:
+            window_size: 6
+            send_every: 6
+            send_first_at: 3
+      on_value:
         then:
           - if:
               condition:
                 lambda: return !id(calibrating);
               then:
                 - lambda: |-
-                    auto lastState = id(mhz19_co2).state;
+                    auto lastState = id(lastCo2value);
                     auto currentState = x;
 
                     auto call = id(led).turn_on();
@@ -301,6 +309,7 @@ sensor:
                     }
 
                     call.perform();
+                    id(lastCo2value) = currentState;
                 - delay: 20s
                 - light.turn_on:
                     id: led
