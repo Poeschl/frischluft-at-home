@@ -20,6 +20,7 @@ New features with this firmware:
 
 * Below the CO2 value on the screen the history of the last hours is shown
 * The LED will now light up when a threshold was reached. After 20 seconds it will dimm to a configurable brightness value (default: 50%)
+* Night mode will disable all LEDs and mute the beeper if enabled
 * Set the alert thresholds / audio setting / thresholds via MQTT
 * Home Assistant MQTT Autodiscovery
 * The MH-Z19 can also measure temperature, so this is included on MQTT (seems way off)
