@@ -269,11 +269,6 @@ sensor:
     co2:
       name: "${human_devicename} CO2"
       id: mhz19_co2
-      filters:
-        - sliding_window_moving_average:
-            window_size: 6
-            send_every: 6
-            send_first_at: 3
       on_value:
         then:
           - if:
@@ -326,7 +321,7 @@ sensor:
                           brightness: !lambda return id(led_brightness);
     temperature:
       name: "${human_devicename} Temperature"
-    update_interval: 10s
+    update_interval: 60s
 
 switch:
   - platform: template
