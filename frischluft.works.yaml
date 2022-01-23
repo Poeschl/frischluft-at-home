@@ -200,6 +200,9 @@ font:
   - file: "fonts/arial.ttf"
     id: arial_small
     size: 10
+  # - file: "fonts/arial.ttf"
+  #   id: arial_big
+  #   size: 40
 
 image:
   - file: "icon/bell-ring.png"
@@ -237,6 +240,22 @@ display:
           } else {
             it.graph(0, 18, id(co2_graph));
           }
+      # Alternative display mode
+      #   To enable it, comment the next section in an the "default_page" above out.
+      #   Also make sure the arial_big font is commented in.
+      #
+      # - id: default_page
+      #   lambda: |-
+      #     auto co2 = id(mhz19_co2).state;
+
+      #     if (co2 > id(thresholdAlarmPPM)) {
+      #       it.print(64, 18, id(arial_bold), TextAlign::BOTTOM_CENTER, "!!! Alert !!!");
+      #     } else {
+      #       it.print(64, 18, id(arial_bold), TextAlign::BOTTOM_CENTER, "CO2");
+      #     }
+
+      #     it.printf(64, 18, id(arial_big), TextAlign::TOP_CENTER, "%.0f", co2);
+      #     it.print(128, 64, id(arial_small), TextAlign::BOTTOM_RIGHT, "ppm");
       - id: status_page
         lambda: |-
           it.print(64, 18, id(arial_bold), TextAlign::BOTTOM_CENTER, "Status");

@@ -55,6 +55,14 @@ The defaults settings can be also adjusted in the `globals` section after line 3
 
 In case you want to run the CO2 board standalone without WiFi, remove the `mqtt`, `wifi`, `captive_protal` and `ota` sections.
 
+### Alternative Display-Mode
+
+![Home Assistant UI](assets/alternative_display.png)
+
+Instead of the small CO2 values on the top, the value will be displayed as big number in the lower part.
+
+To enable it see the comment in the `frischluft.works.yaml` in the display section.
+
 ### CLI
 
 If you using the terminal variants, the following command should let you compile the config in the repository root folder.
